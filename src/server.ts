@@ -7,17 +7,33 @@ import ErrorMiddlewares from "./middlewares/error";
 import dotenv from "dotenv";
 import NotFoundMiddleware from "./middlewares/notFound";
 import helmet from "helmet";
+import morgan from "morgan";
+import { rateLimit } from "express-rate-limit";
 
 //Config DotEnv
 dotenv.config();
 
 const app = express();
 
-// Securiser le header response 
-app.use(helmet())
+// Security DOSS-Attack
+const limiter  = rateLimit({
+  windowMs: 15 * 60 * 1000, 
+	limit: 100, 
+	standardHeaders: 'draft-8', 
+	legacyHeaders: false, 
+	ipv6Subnet: 56, 
+  message: "Beaucoup de requetes dans un peut de temsp",
+});
+app.use(limiter);
+
+// Securiser le header response
+app.use(helmet());
 
 // parse l'object envoyer dans une requet en object javasript
 app.use(express.json());
+
+// Logs in termial for dev
+app.use(morgan("dev"));
 
 // Set views directory
 app.set("view engine", "pug");
@@ -30,8 +46,6 @@ app.use(express.static("./public"));
 const productController = new ProductController(
   new ProductService(fakeProducts())
 );
-
-
 
 //**PRODUCTS VIEWS */
 app.get("/products", (req, res) => productController.ProductsRender(req, res));
@@ -74,6 +88,8 @@ app.delete("/api/products/:id", (req, res) => {
 // Middlewarese
 app.use(NotFoundMiddleware.handle);
 app.use(ErrorMiddlewares.handle);
+
+
 
 //Server
 const PORT = 5000;
