@@ -1,0 +1,6 @@
+{
+  "products": [
+    { "id": 1, "name": "clavier", "desc": "clavier logithec", "price": 112.5 },
+    { "id": 2, "name": "cpu", "desc": "CPU ryzen 7 7700", "price": 250.5 }
+  ]
+}

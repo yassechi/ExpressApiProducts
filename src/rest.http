@@ -1,0 +1,23 @@
+
+
+
+
+// ** GET ===============================================
+
+// Get All Products
+# GET http://localhost:5000/products/10;
+
+// Get Product By ID
+# GET http://localhost:5000/products
+
+
+// ** POST ==============================================
+// Create product
+POST http://localhost:5000/products
+
+
+
+
+# axios.post("http://localhost:5000/products", JSON.stringify(prod), {
+#     headers: { "content-type": "application/json" },
+#   });

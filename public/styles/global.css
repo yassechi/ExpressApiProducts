@@ -1,0 +1,14 @@
+.title-home{
+    color: rgb(138, 132, 132);
+    background: rgb(24, 2, 24);
+    text-align: center;
+    padding: 10px;
+}
+
+body {
+    background-color: rgb(28, 27, 27);
+}
+
+.products{
+    color: rgb(159, 155, 155);
+}

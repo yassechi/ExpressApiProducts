@@ -1,0 +1,17 @@
+Get All products -> 02-51-2025 9:11:19 1762073479942
+Get All products -> 02-0052-2025 9:11:01 1762073521996
+Get All products -> 02-11-2025 9:11:30 1762073550789
+Get All products -> 02-11-2025 9:11:57
+Get All products -> 02-11-2025 9:53:23
+Get All products -> 02-11-2025 10:15:05
+get product id:  5 -> 02-11-2025 10:17:05
+Get All products -> 02-11-2025 10:18:57
+Get All products -> 02-11-2025 10:19:16
+Get All products -> 02-11-2025 10:19:41
+Get All products -> 02-11-2025 10:24:58
+Get All products -> 02-11-2025 10:25:43
+Get All products -> 02-11-2025 10:27:26
+get product id:  1 -> 02-11-2025 10:27:43
+get product id:  152 -> 02-11-2025 10:27:49
+get product avec un ID pas correct :  NaN -> 02-11-2025 10:27:59
+Get All products -> 02-11-2025 10:31:00
