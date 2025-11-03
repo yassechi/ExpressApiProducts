@@ -6,11 +6,17 @@ import path from "path";
 import ErrorMiddlewares from "./middlewares/error";
 import dotenv from "dotenv";
 import NotFoundMiddleware from "./middlewares/notFound";
+import helmet from "helmet";
 
 //Config DotEnv
 dotenv.config();
 
 const app = express();
+
+// Securiser le header response 
+app.use(helmet())
+
+// parse l'object envoyer dans une requet en object javasript
 app.use(express.json());
 
 // Set views directory
