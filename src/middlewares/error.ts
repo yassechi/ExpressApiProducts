@@ -8,10 +8,7 @@ export default class ErrorMeddlewares {
       res.status(500).json({
         error: "Internal Server Error",
         message: error.message,
-        stack: process.env.NODE_ENV === "dev" ?  error.stack : null  
-
-        
-
+        stack: process.env.NODE_ENV === "dev" ?  error.stack : null
       });
     }
   }

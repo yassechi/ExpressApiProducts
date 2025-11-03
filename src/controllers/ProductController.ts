@@ -7,7 +7,8 @@ export class ProductController {
   constructor(private productService: ProductService) {}
 
   GetProducts(req: string) {
-    throw new Error('Probleme Serveur dans le get All Products !')
+    // Test ErrorMiddleware
+    // throw new Error('Probleme Serveur dans le get All Products !')
     return this.productService.FindAll(req);
   }
 

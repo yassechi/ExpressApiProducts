@@ -4,9 +4,11 @@ import { ProductService } from "./services/ProductService";
 import { ProductController } from "./controllers/ProductController";
 import path from "path";
 import ErrorMiddlewares from "./middlewares/error";
-import dotenv from 'dotenv'
-dotenv.config()
+import dotenv from "dotenv";
+import NotFoundMiddleware from "./middlewares/notFound";
 
+//Config DotEnv
+dotenv.config();
 
 const app = express();
 app.use(express.json());
@@ -15,21 +17,18 @@ app.use(express.json());
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
-// Set Static styme
+// Set Static directory
 app.use(express.static("./public"));
 
+// Constructor => equivalant injection
 const productController = new ProductController(
   new ProductService(fakeProducts())
 );
 
+
+
 //**PRODUCTS VIEWS */
-
 app.get("/products", (req, res) => productController.ProductsRender(req, res));
-
-// // Toutes les autres routes
-// app.use((req, res) => {
-//   res.render("notfound", { title: "Not Found 404" });
-// });
 
 //**PRODUCTS API */
 // GET ALL
@@ -57,7 +56,7 @@ app.patch("/api/products/:id", (req, res) => {
   });
 });
 
-// // DELETE
+// DELETE
 app.delete("/api/products/:id", (req, res) => {
   let response = productController.DelProduct(req.params.id);
   res.status(response.status).send({
@@ -66,9 +65,9 @@ app.delete("/api/products/:id", (req, res) => {
   });
 });
 
-// Gerer les problemme du Server => le route exist mais probelemme dans la route
+// Middlewarese
+app.use(NotFoundMiddleware.handle);
 app.use(ErrorMiddlewares.handle);
-
 
 //Server
 const PORT = 5000;
